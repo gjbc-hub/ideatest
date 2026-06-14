@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加图书</title>
+    <style>
+        body{
+            font-family:宋体,serif;
+            margin:0;
+            padding:0;
+            background:#f5f5f5;
+        }
+        .container {
+            width:960px; /* 加宽一点，保证放得下两栏 */
+            margin:30px auto;
+            background:#fff;
+            padding:20px;
+            border:1px solid #eee;
+            /* 核心：用弹性布局代替浮动，自动同行 */
+            display: flex;
+            gap: 20px; /* 两栏间距 */
+            align-items: flex-start; /* 顶部对齐 */
+        }
+        .main1 {
+            width:200px;
+            background:#f0f0f0;
+            padding:15px;
+            border-radius:5px;
+        }
+        .main1 a {
+            color:#333;
+            text-decoration:none;
+            display:block;
+            padding:6px;
+            margin: 0;
+        }
+        .main1 a:hover {
+            background: #090101;
+            color: #f6f4f4;
+        }
+        .main2 {
+            /* 自动占满剩余宽度，不需要浮动 */
+            flex: 1;
+            padding:15px;
+        }
+        h2 {
+            color:#333;
+            text-align:center;
+            margin-bottom:20px;
+        }
+        table {
+            border-collapse:collapse;
+            width:100%;
+            margin-top:10px;
+        }
+        td {
+            border:1px solid #ccc;
+            padding:10px;
+        }
+        input, select {
+            width:220px;
+            padding:6px;
+            border:1px solid #ccc;
+            border-radius:3px;
+        }
+        button {
+            padding:6px 20px;
+            background:#007bff;
+            color:#fff;
+            border:none;
+            border-radius:3px;
+            cursor:pointer;
+        }
+        button:hover {
+            background:#0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 左侧导航 -->
+    <div class="main1">
+        <h3>功能导航</h3>
+        <p><a href="index.html">首页</a></p>
+        <p><a href="list.html">图书列表</a></p>
+        <p><a href="add.html">添加图书</a></p>
+    </div>
+
+    <!-- 右侧表格 -->
+    <div class="main2">
+        <h2>添加图书</h2>
+        <form action="BookServlet" method="post" onsubmit="return checkForm()">
+            <table>
+                <tr>
+                    <td>书号：</td>
+                    <td><input type="text" name="bookId" id="bookId" placeholder="请输入书号"></td>
+                </tr>
+                <tr>
+                    <td>书名：</td>
+                    <td><input type="text" name="bookName" id="bookName" placeholder="请输入书名"></td>
+                </tr>
+                <tr>
+                    <td>作者：</td>
+                    <td><input type="text" name="author" id="author" placeholder="请输入作者"></td>
+                </tr>
+                <tr>
+                    <td>出版社：</td>
+                    <td>
+                        <select name="publisher" id="publisher">
+                            <option value="">请选择出版社</option>
+                            <option value="电子工业出版社">电子工业出版社</option>
+                            <option value="机械工业出版社">机械工业出版社</option>
+                            <option value="清华大学出版社">清华大学出版社</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>书籍类别：</td>
+                    <td>
+                        <select name="category" id="category">
+                            <option value="">请选择类别</option>
+                            <option value="计算机">计算机</option>
+                            <option value="文学">文学</option>
+                            <option value="科技">科技</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>价格：</td>
+                    <td><input type="text" name="price" id="price" placeholder="请输入数字价格"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><button type="submit">提交</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script>
+    function checkForm() {
+        var bookId = document.getElementById("bookId").value.trim();
+        var bookName = document.getElementById("bookName").value.trim();
+        var author = document.getElementById("author").value.trim();
+        var publisher = document.getElementById("publisher").value;
+        var category = document.getElementById("category").value;
+        var price = document.getElementById("price").value.trim();
+
+        if (bookId === "") {
+            alert("书号不能为空！");
+            return false;
+        }
+        if (bookName === "") {
+            alert("书名不能为空！");
+            return false;
+        }
+        if (author === "") {
+            alert("作者不能为空！");
+            return false;
+        }
+        if (publisher === "") {
+            alert("请选择出版社！");
+            return false;
+        }
+        if (category === "") {
+            alert("请选择书籍类别！");
+            return false;
+        }
+        if (price === "") {
+            alert("价格不能为空！");
+            return false;
+        }
+        if (isNaN(price) || parseFloat(price) <= 0) {
+            alert("价格必须是大于0的数字！");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书列表</title>
+    <style>
+        body {
+            font-family:宋体;
+            margin:0;
+            padding:0;
+            background: #bfd9dc;
+        }
+        .container{
+            width:960px;
+            margin:30px auto;
+            background: #d2d2dc;
+            padding:20px;
+            border:1px solid #eee;
+            /* 核心：弹性布局，自动同行 */
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .main1 {
+            width:200px;
+            background:#f0f0f0;
+            padding:15px;
+            border-radius:5px;
+        }
+        .main2 {
+            flex: 1; /* 自动占满剩余宽度 */
+            padding:15px;
+        }
+        h2{
+            color:#333;
+            text-align:center;
+            margin-bottom:20px;
+        }
+        table{
+            border-collapse:collapse;
+            width:100%;
+            margin-top:10px;
+        }
+        th, td {
+            border:1px solid #ccc;
+            padding:10px;
+            text-align:center;
+        }
+        th {
+            background:#e0e0e0;
+            color:#333;
+        }
+        a {
+            color:#007bff;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main1">
+        <h3>功能导航</h3>
+        <p><a href="index.html">首页</a></p>
+        <p><a href="list.html">图书列表</a></p>
+        <p><a href="add.html">添加图书</a></p>
+    </div>
+    <div class="main2">
+        <h2>图书列表</h2>
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>书名</th>
+                <th>价格</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Java编程入门</td>
+                <td>45</td>
+                <td>修改 删除</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Web开发基础</td>
+                <td>52</td>
+                <td>修改 删除</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

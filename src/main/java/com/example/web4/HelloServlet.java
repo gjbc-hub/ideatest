@@ -1,28 +1,40 @@
 package com.example.web4;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import java.io.*;
-
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet("/BookServlet")
 public class HelloServlet extends HttpServlet {
-    private String message;
+//    public static void main(String args[]){
+//        System.out.println("测试");
+//    }
 
-    public void init() {
-        message = "Hello World!";
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 解决中文乱码
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
 
-        // Hello
+        // 接收表单数据
+        String bookId = request.getParameter("bookId");
+        String bookName = request.getParameter("bookName");
+        String author = request.getParameter("author");
+        String publisher = request.getParameter("publisher");
+        String category = request.getParameter("category");
+        String price = request.getParameter("price");
+
+        // 输出结果
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
-
-    public void destroy() {
+        out.println("<h2>图书信息添加成功！</h2>");
+        out.println("书号：" + bookId + "<br>");
+        out.println("书名：" + bookName + "<br>");
+        out.println("作者：" + author + "<br>");
+        out.println("出版社：" + publisher + "<br>");
+        out.println("图书类别：" + category + "<br>");
+        out.println("价格：" + price + "元<br>");
     }
 }
