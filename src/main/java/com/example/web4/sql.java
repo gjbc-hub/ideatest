@@ -19,6 +19,9 @@ public class sql {
                 String name = rs.getString("name");
                 System.out.println("书名:"+name);
             }
+//                out.println("编号：" + b1.getId());
+//                out.println("书名：" + b1.getName());
+//                out.println("出版社：" + b1.getPub());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

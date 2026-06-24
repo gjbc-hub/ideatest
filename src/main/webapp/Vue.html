@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="mydiv">
+    <input type="text" v-model = "message">
+    <table>
+        <tr v-for="pub in pubs">
+            <td>{{pub.id}}</td>
+            <td>{{pub.name}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var myApp = new Vue({
+        el:"#mydiv",
+        data:{
+            message:"test",
+            pubs:[
+                {id:"001",name:"aaa"},
+                {id:"002",name:"bbb"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

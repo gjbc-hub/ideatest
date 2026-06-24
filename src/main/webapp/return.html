@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function(){
+    //     if(this.readyState===4&&this.status===200){
+    //         alert(this.responseText);
+    //     }
+    // }
+    // xhr.open("get","http://localhost:8081/web4/Servlet",true);
+    // xhr.send();
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (){
+        if(this.readyState===4&&this.status===200)
+        alert(this.responseText);
+    }
+    xhr.open("get","http://localhost:8080/web4_war_exploded/HelloServlet");
+    xhr.send();
+</script>
+</body>
+</html>
